@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <body>
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="content">
+                <h:form id="frmLogin" rendered="#{!loginBean.logDTO.isLoggedIn}">
+                    <p:messages id="messages" redisplay="false" showDetail="true"
+                                autoUpdate="true" />
+                    <h:panelGrid columns="2">
+                        <h:outputText value="UserId" />
+                        <h:inputText value="#{loginBean.logDTO.userId}" style="width: 106px;" />
+                        <h:outputText value="Password" />
+                        <h:inputSecret value="#{loginBean.logDTO.password}" style="width: 108px;" />
+                        <h:commandButton action="#{loginBean.login}" value="Login"
+                                         id="btnLogin" />
+                    </h:panelGrid>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+    	
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:messages id="messages" redisplay="false" showDetail="true"
+                                autoUpdate="true" />
+					
+                    <p:panel header="Company Master">
+                    	<h:panelGrid columns="2" cellpadding="5"> 
+                        	<h:outputText value="Name: "/>
+                        	<p:inputText id="compname" value="#{companyBean.compDTO.name}" label="Company Name"> 
+                        		<f:validateLength maximum="150" /> 
+                        	</p:inputText>
+                        
+                        	<h:outputText value="Address: " />  
+				            <p:inputText id="address1" value="#{companyBean.compDTO.address1}" label="Address 1">
+				              	<f:validateLength maximum="150" />
+				  			</p:inputText>	
+				            <h:outputText value="" />
+				            <p:inputText id="address2" value="#{companyBean.compDTO.address2}" lebel="Address 2">
+				             	<f:validateLength maximum="150" />
+				            </p:inputText>
+				            <h:outputText value="City: " />  
+				            <p:inputText id="city" value="#{companyBean.compDTO.city}" label="City">
+				            	<f:validateLength maximum="100" />
+				            </p:inputText>
+				            <h:outputText value="Pin Code: " />  
+				            <p:inputText id="pincode" value="#{companyBean.compDTO.pincode}" label="Pin Code">
+				            	<f:validateLength maximum="6" />
+				            </p:inputText>
+				            <h:outputText value="Contact Number: " />  
+				            <p:inputText id="contactnumber" value="#{companyBean.compDTO.contactnumber}" label="Contact Number"> 
+				            	<f:validateLength maximum="100" />
+				            </p:inputText>
+                  		</h:panelGrid>	
+                  		<p:commandButton id="submit" value = "Save Company" action="#{companyBean.saveCompany}"/>	  
+                    </p:panel>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

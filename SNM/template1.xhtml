@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Cache-Control"
+              content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet"
+              type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet"
+              type="text/css" />
+
+        <script type="text/javascript" src="common/script/Clock.js"></script>
+        <script type="text/javascript">
+	
+				
+				function checkPasswords() {
+				    //alert("test");
+				    window.open('PDFReportServlet?pdf=test.pdf');
+				    return false;
+				}
+				
+				
+				
+		</script>
+       <title>Ledger Management</title>
+    </h:head>
+
+    <h:body>
+          <ui:insert name="content">Put default content here, if any.</ui:insert>
+    </h:body>
+    
+</html>

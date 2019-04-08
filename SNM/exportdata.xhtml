@@ -1,0 +1,180 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+    	
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form id="display" method="post" onSubmit="window.location.reload()">
+                    <p:messages id="messages" redisplay="false" showDetail="true"
+                                autoUpdate="true" />
+                        <center>        
+                    	<p:panel id="entry" header="Export Data" style="width:1600px;height:650px">
+							<h:panelGrid columns="2" width="200" border="0">
+						        <h:commandLink>  
+						            <p:graphicImage value="/images/excel.png" />  
+						            <p:dataExporter type="xls" target="tbl" fileName="CustomerData" pageOnly="false"/>  
+						        </h:commandLink>  
+				        	</h:panelGrid>	                		
+					        
+                    		<h:panelGrid columns="5" cellpadding="5" width="1000" border="0" >
+                    			<p:dataTable id="tbl" var="cust" value="#{customerBean.customerModel}" 
+                    			update="display">
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Serial Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerSerialNumber}" />  
+								    </p:column>  
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT File Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITFileNumber}" />  
+								    </p:column>  
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GST File Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTFileNumber}" />  
+								    </p:column>  
+								  	<p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Customer Name" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerCompanyName}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Contact Person" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerProprietorName}" />  
+								    </p:column>
+
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Contact Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerContactNumber}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Customer Email Id" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerContactEmailId}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="PAN Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerPANNumber}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Date of Birth" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerDOB}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Last Filed Year" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITLastFiledYear}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Contact Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITPhoneNumber}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT Type" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITType}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT User ID" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITUserID}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT Password" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITPassword}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT Email Id" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITEmailId}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="IT Email Password" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITEmailPassword}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Remarks" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerITRemarks}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GSTIN Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTINNumber}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="Phone Number" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTPhoneNumber}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GST User ID" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTUserID}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GST Password" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTPassword}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GST Email Id" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTEmailId}" />  
+								    </p:column>
+								    <p:column>  
+								        <f:facet name="header">  
+								            <h:outputText value="GST Email Password" />  
+								        </f:facet> 
+								        <h:outputText value="#{cust.customerGSTEmailPassword}" />  
+								    </p:column>
+
+
+								</p:dataTable> 
+	                    		</h:panelGrid>
+                    	</p:panel>
+                    	</center>  	
+				    	<p:resizable for="entry" minWidth="200" maxWidth="400" minHeight="100" maxHeight="200" />
+				    	    
+                 </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

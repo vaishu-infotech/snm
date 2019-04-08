@@ -1,0 +1,660 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+    	
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form id="form">
+                    <p:messages id="messages" redisplay="false" showDetail="true"
+                                autoUpdate="true" />
+				
+                    <p:panel id="display" >
+                    	<p:panelGrid columns="2" style="width: 100%"  styleClass="ui-noborder">
+                    		<p:column style="width:80%">
+	                    	<p:panel id="displaymode" header="Customer" rendered="#{customerBean.custDTO.lockCustmode}" > 
+	                    	<p:panelGrid style="width: 100%"  styleClass="ui-noborder">
+	                    		<p:row>
+	                    			<p:column>
+	                  					<h:outputText value="Serial Number:" />		
+	                  				</p:column>
+	                   				<p:column>
+	                   					<h:inputText id="SerNo" value="#{customerBean.custDTO.customerSerialNumber}" readonly="true"/>
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:outputText value="IT File number: "/>
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:inputText id="FileNo" value="#{customerBean.custDTO.customerITFileNumber}" readonly="true"/>
+	                   				</p:column>
+									<p:column>
+										<h:outputText value="GST File Number: " />  
+					            	</p:column>
+									<p:column>
+										 <h:inputText id="GSTFileEdit" value="#{customerBean.custDTO.customerGSTFileNumber}" readonly="true"/>
+									</p:column>
+	                   			</p:row>
+	                   			<p:row>
+	                   				<p:column>
+	                   					<h:outputText value="Customer Name: " />	
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:inputText id="CompName" value="#{customerBean.custDTO.customerCompanyName}" readonly="true"/>	
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:outputText value="Contact Person: " />  	
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:inputText id="ProprietorName" value="#{customerBean.custDTO.customerProprietorName}" readonly="true"/>
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:outputText value="Contact Number: " />
+	                   				</p:column>
+	                   				<p:column>
+	                   					<h:inputText id="ContactNumber" value="#{customerBean.custDTO.customerContactNumber}" readonly="true"/>
+	                   				</p:column>
+				              	</p:row>
+					            <p:row>
+					              	<p:column>
+					            		<h:outputText value="Customer Email Id: " />  		
+					              	</p:column>
+					              	<p:column>
+					            		<h:inputText id="ContactEmailId" value="#{customerBean.custDTO.customerContactEmailId}" readonly="true"/>  	
+					              	</p:column>
+					              	<p:column>
+					              		<h:outputText value="PAN Number: " />
+					              	</p:column>
+					              	<p:column>
+					            		<h:inputText id="PANNumber" value="#{customerBean.custDTO.customerPANNumber}" readonly="true"/>
+					            	</p:column>
+					            	<p:column>
+					            		<h:outputText value="Date of Birth: " />  
+					              	</p:column>
+					            	<p:column>
+										<h:inputText id="dob1" value="#{customerBean.custDTO.customerDOB}" readonly="true"
+											 pattern="dd-MM-yyyy"/>	
+					            	</p:column>
+													              
+					             </p:row>
+					             <p:row>
+					              	<p:column>
+					            		<h:outputText value="Customer Address: " />  		
+					              	</p:column>
+					              	<p:column colspan = "5">
+					            		<h:inputText id="CustomerAddress" size="100" value="#{customerBean.custDTO.customerAddress}" readonly="true"/>  	
+					              	</p:column>
+													              
+					             </p:row>
+							
+							</p:panelGrid>                    
+							</p:panel>
+	
+							<p:panel id="newmode" header="Customer" rendered="#{customerBean.custDTO.newCustmode}">
+							<table width="90%" border="0">
+	                  			<tr>
+	                  				<td width="10%">
+	                  					<h:outputText value="Serial Number(New):" />		
+	                  				</td>
+	                   				<td width="20%">
+	                   					<p:inputText id="SerNoEdit1new" value="#{customerBean.custDTO1.customerSerialNumber}"/>
+	                   				</td>
+	                   				<td width="10%">
+	                   					<h:outputText value="IT File number: "/>
+	                   				</td>
+	                   				<td width="30%">
+	                   					<p:inputText id="FileNoEditnew" value="#{customerBean.custDTO1.customerITFileNumber}"/>
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="GST File Number: " />  
+	                   				</td>
+	                   				<td>
+	                   					 <p:inputText id="editARNnew" value="#{customerBean.custDTO1.customerGSTFileNumber}"/>
+	                   				</td>
+	                   			</tr>
+	                   			<tr>
+	                   				<td>
+	                   					<h:outputText value="Customer Name: " />	
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="CompNameEditnew" value="#{customerBean.custDTO1.customerCompanyName}"/>	
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="Contact Person: " />  	
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="ProprietorNameEditnew" value="#{customerBean.custDTO1.customerProprietorName}"/>
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="Contact Number: " />
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="ContactNumberEditnew" value="#{customerBean.custDTO1.customerContactNumber}"/>
+	                   				</td>
+					              </tr>
+					            <tr>
+					              	<td>
+					            		<h:outputText value="Customer Email Id: " />  		
+					              	</td>
+					              	<td>
+					            		<p:inputText id="ContactEmailIdEditnew" value="#{customerBean.custDTO1.customerContactEmailId}"/>  	
+					              	</td>
+					              	<td>
+					              		<h:outputText value="PAN Number: " />
+					              	</td>
+					              	<td>  
+					            		<p:inputText id="PANNumberEditnew" value="#{customerBean.custDTO1.customerPANNumber}"/>
+					            	</td>
+					            	<td>
+					            		<h:outputText value="Date of Birth: " />  
+					              	</td>
+					            	<td>
+										
+										<p:calendar id="dobnew" value="#{customerBean.custDTO1.customerDOB}" pattern="dd-MM-yyyy" 
+											mask="true" />
+					            	</td>
+					              
+					              </tr>
+					              <tr>
+					              <td>
+					              		<h:outputText value="Address: " />
+					              </td>
+					              <td colspan="5">
+					              		<p:inputText id="AddressEditnew" size="100" value="#{customerBean.custDTO.customerAddress}"/>
+					              </td>
+					              </tr>
+							</table>
+							</p:panel>
+							
+							<p:panel id="editmode" header="Customer" rendered="#{customerBean.custDTO.editCustmode}">
+							<table width="90%" border="0">
+	                  			<tr>
+	                  				<td width="10%">
+	                  					<h:outputText value="Serial Number:" />		
+	                  				</td>
+	                   				<td width="20%">
+	                   					<p:inputText id="SerNoEdit" value="#{customerBean.custDTO.customerSerialNumber}"/>
+	                   				</td>
+	                   				<td width="10%">
+	                   					<h:outputText value="IT File number: "/>
+	                   				</td>
+	                   				<td width="30%">
+	                   					<p:inputText id="FileNoEdit" value="#{customerBean.custDTO.customerITFileNumber}"/>
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="GST File Number: " />  
+	                   				</td>
+	                   				<td>
+	                   					 <p:inputText id="editARN" value="#{customerBean.custDTO.customerGSTFileNumber}"/>
+	                   				</td>
+	                   			</tr>
+	                   			<tr>
+	                   				<td>
+	                   					<h:outputText value="Customer Name: " />	
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="CompNameEdit" value="#{customerBean.custDTO.customerCompanyName}"/>	
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="Contact Person: " />  	
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="ProprietorNameEdit" value="#{customerBean.custDTO.customerProprietorName}"/>
+	                   				</td>
+	                   				<td>
+	                   					<h:outputText value="Contact Number: " />
+	                   				</td>
+	                   				<td>
+	                   					<p:inputText id="ContactNumberEdit" value="#{customerBean.custDTO.customerContactNumber}"/>
+	                   				</td>
+					              </tr>
+					            <tr>
+					              	<td>
+					            		<h:outputText value="Customer Email Id: " />  		
+					              	</td>
+					              	<td>
+					            		<p:inputText id="ContactEmailIdEdit" value="#{customerBean.custDTO.customerContactEmailId}"/>  	
+					              	</td>
+					              	<td>
+					              		<h:outputText value="PAN Number: " />
+					              	</td>
+					              	<td>  
+					            		<p:inputText id="PANNumberEdit" value="#{customerBean.custDTO.customerPANNumber}"/>
+					            	</td>
+					            	<td>
+					            		<h:outputText value="Date of Birth: " />  
+					              	</td>
+					            	<td>
+										
+										<p:calendar id="billdate" value="#{customerBean.custDTO.customerDOB}" pattern="dd-MM-yyyy" 
+											mask="true" />
+					            	</td>
+					              
+					              </tr>
+					              <tr>
+					              <td>
+					              		<h:outputText value="Address: " />
+					              </td>
+					              <td colspan="5">
+					              		<p:inputText id="AddressEdit" size="100" value="#{customerBean.custDTO.customerAddress}"/>
+					              </td>
+					              </tr>
+							</table>
+							</p:panel>
+							</p:column>					
+							<p:column style="width:20%">		
+							<p:panel id="displayButtons" header="Actions" rendered="#{loginBean.logDTO.readOnlyUser}" >
+							<table>
+								<tr>
+									<td>
+										<p:commandButton id="UpdCustButton" value = "Update Customer" action="#{customerBean.saveCustomer}"
+											rendered="#{customerBean.custDTO.editCustmode or customerBean.custDTO.editCustITmode or customerBean.custDTO.editCustGSTmode}"/>
+				            			<p:commandButton id="submitTest" value = "Save Customer" action="#{customerBean.saveCustomer1}"
+				            				rendered="#{customerBean.custDTO.newCustmode}"/>
+									</td>
+								</tr>
+								<tr>
+									<td>	
+	                   					<p:commandButton id="EditCustsubmit" value = "Edit Customer" action="#{customerBean.editCustomerInfo}"
+	                    					type="submit" ajax="false" rendered="#{customerBean.custDTO.lockCustmode}"/>
+	                   					<p:commandButton id="EditCustITsubmit" value = "Edit IT Details" action="#{customerBean.editCustomerITInfo}"
+	                    					type="submit" ajax="false" rendered="#{customerBean.custDTO.lockCustITmode}"/>
+	                   					<p:commandButton id="EditCustGSTsubmit" value = "Edit GST Details" action="#{customerBean.editCustomerGSTInfo}"
+	                    					type="submit" ajax="false" rendered="#{customerBean.custDTO.lockCustGSTmode}"/>
+	                    				<p:commandButton id="delete" value = "Delete" action="#{customerBean.deleteCustomer}"
+	                    					rendered="#{loginBean.logDTO.admin}" type="submit" ajax="false"/>
+	                    					
+
+									</td>
+								</tr>
+							</table>
+							</p:panel>						
+							</p:column>
+						</p:panelGrid>
+						<h:panelGrid columns="4">
+							<p:panel id="displayIT" header="IT Details" rendered="#{customerBean.custDTO.lockCustITmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="Last Filed Year " />
+									</td>
+									<td>
+										<h:inputText id="LastFiledYear" value="#{customerBean.custDTO.customerITLastFiledYear}" readonly="true"/>
+									</td>
+									<td>
+										<h:outputText value="Contact Number: " />  
+					            	</td>
+									<td>
+										<h:inputText id="MobileNumber" value="#{customerBean.custDTO.customerITPhoneNumber}" readonly="true"/> 
+									</td>
+									<td>
+										<h:outputText value="IT Type: " />  
+									</td>
+									<td>
+										<h:inputText id="ItType" value="#{customerBean.custDTO.customerITType}" readonly="true"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT User ID: " />		
+									</td>
+									<td>
+										<h:inputText id="ITUserID" value="#{customerBean.custDTO.customerITUserID}" readonly="true"/>	
+									</td>
+									<td>
+										<h:outputText value="IT Email Id: " />
+									</td>
+									<td>	  
+					            		<h:inputText id="ITEmailId" value="#{customerBean.custDTO.customerITEmailId}" readonly="true"/> 
+									</td>
+									<td>
+										<h:outputText value="Remarks: " />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT Password: " />
+									</td>
+									<td>
+										<h:inputText id="ITPassword" value="#{customerBean.custDTO.customerITPassword}" readonly="true"/>
+									</td>
+									<td>
+										<h:outputText value="IT Email Password: " />
+									</td>
+									<td>  
+					            		<h:inputText id="ITEmailPassword" value="#{customerBean.custDTO.customerITEmailPassword}" readonly="true"/> 
+									</td>
+									<td colspan="2">
+										<h:inputText id="ITRemarks" size="100" value="#{customerBean.custDTO.customerITRemarks}" readonly="true"/>
+									</td>
+								</tr>
+							</table>	  
+							</p:panel>
+
+							<p:panel id="neweditIT" header="IT Details" rendered="#{customerBean.custDTO.newCustmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="Last Filed Year " />
+									</td>
+									<td>
+										<p:autoComplete id="editLastFiledYearnew" dropdown="true"  value="#{customerBean.custDTO1.customerITLastFiledYear}" 
+				            			completeMethod="#{autoCompleteBean.completeAssessmentTypeList}" multiple="false" size="15"/>
+										
+									</td>
+									<td>
+										<h:outputText value="Contact Number: " />  
+					            	</td>
+									<td>
+										<p:inputText id="editMobileNumbernew" value="#{customerBean.custDTO1.customerITPhoneNumber}"/> 
+									</td>
+									<td>
+										<h:outputText value="IT Type: " />  
+									</td>
+									<td>
+										<p:autoComplete id="ittype1" dropdown="true"  value="#{customerBean.custDTO1.customerITType}" 
+				            			completeMethod="#{autoCompleteBean.completeITTypeList}" multiple="false" size="30"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT User ID: " />		
+									</td>
+									<td>
+										<p:inputText id="editITUserIDnew" value="#{customerBean.custDTO1.customerITUserID}"/>	
+									</td>
+									<td>
+										<h:outputText value="IT Email Id: " />
+									</td>
+									<td>	  
+					            		<p:inputText id="editITEmailIdnew" value="#{customerBean.custDTO1.customerITEmailId}"/> 
+									</td>
+									<td>
+										<h:outputText value="Remarks: " />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT Password: " />
+									</td>
+									<td>
+										<p:inputText id="editITPasswordnew" value="#{customerBean.custDTO1.customerITPassword}"/>
+									</td>
+									<td>
+										<h:outputText value="IT Email Password: " />
+									</td>
+									<td>  
+					            		<p:inputText id="editITEmailPasswordnew" value="#{customerBean.custDTO1.customerITEmailPassword}"/> 
+									</td>
+									<td colspan="2">
+										<p:inputText id="editITRemarksnew" size="100" value="#{customerBean.custDTO.customerITRemarks}"/>
+									</td>
+
+								</tr>
+							</table>	  
+							</p:panel>
+
+							<p:panel id="editIT" header="IT Details" rendered="#{customerBean.custDTO.editCustITmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="Last Filed Year " />
+									</td>
+									<td>
+										<p:autoComplete id="editLastFiledYear" dropdown="true"  value="#{customerBean.custDTO.customerITLastFiledYear}" 
+				            			completeMethod="#{autoCompleteBean.completeAssessmentTypeList}" multiple="false" size="15"/>
+										
+									</td>
+									<td>
+										<h:outputText value="Contact Number: " />  
+					            	</td>
+									<td>
+										<p:inputText id="editMobileNumber" value="#{customerBean.custDTO.customerITPhoneNumber}"/> 
+									</td>
+									<td>
+										<h:outputText value="IT Type: " />  
+									</td>
+									<td>
+										<p:autoComplete id="editItType" dropdown="true"  value="#{customerBean.custDTO.customerITType}" 
+				            			completeMethod="#{autoCompleteBean.completeITTypeList}" multiple="false" size="30"/>
+										
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT User ID: " />		
+									</td>
+									<td>
+										<p:inputText id="editITUserID" value="#{customerBean.custDTO.customerITUserID}"/>	
+									</td>
+									<td>
+										<h:outputText value="IT Email Id: " />
+									</td>
+									<td>	  
+					            		<p:inputText id="editITEmailId" value="#{customerBean.custDTO.customerITEmailId}"/> 
+									</td>
+									<td>
+										<h:outputText value="Remarks: " />
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="IT Password: " />
+									</td>
+									<td>
+										<p:inputText id="editITPassword" value="#{customerBean.custDTO.customerITPassword}"/>
+									</td>
+									<td>
+										<h:outputText value="IT Email Password: " />
+									</td>
+									<td>  
+					            		<p:inputText id="editITEmailPassword" value="#{customerBean.custDTO.customerITEmailPassword}"/> 
+									</td>
+									<td colspan="2">
+										<p:inputText id="editITRemarks" size="100" value="#{customerBean.custDTO.customerITRemarks}"/>
+									</td>
+									
+								</tr>
+							</table>	  
+							</p:panel>
+							
+							<p:panel id="displayGST" header="GST Details" rendered="#{customerBean.custDTO.lockCustGSTmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="GSTIN Number" />
+									</td>
+									<td>
+										<h:inputText id="GSTINEdit" value="#{customerBean.custDTO.customerGSTINNumber}" readonly="true"/>
+									</td>
+									<td>
+										<h:outputText value="Phone Number: " />  
+									</td>
+									<td>
+										<h:inputText id="PhoneEdit" value="#{customerBean.custDTO.customerGSTPhoneNumber}" readonly="true"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST User ID" />
+									</td>
+									<td>
+										<h:inputText id="GSTUserEdit" value="#{customerBean.custDTO.customerGSTUserID}" readonly="true"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Id: " />  
+					            	</td>
+									<td>
+										<h:inputText id="GSTEmailEdit" value="#{customerBean.custDTO.customerGSTEmailId}" readonly="true"/>	 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST Password" />
+									</td>
+									<td>
+										<h:inputText id="GSTPasswordEdit" value="#{customerBean.custDTO.customerGSTPassword}" readonly="true"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Password " />  
+					            	</td>
+									<td>
+										<h:inputText id="GSTEmailPasswordEdit" value="#{customerBean.custDTO.customerGSTEmailPassword}" readonly="true"/>
+									</td>
+								</tr>
+							</table>
+							</p:panel>
+
+							<p:panel id="neweditGST" header="GST Details" rendered="#{customerBean.custDTO.newCustmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="GSTIN Number" />
+									</td>
+									<td>
+										<p:inputText id="GSTINEditnew" value="#{customerBean.custDTO1.customerGSTINNumber}"/>
+									</td>
+									<td>
+										<h:outputText value="Phone Number: " />  
+									</td>
+									<td>
+										<p:inputText id="editPhonenew" value="#{customerBean.custDTO1.customerGSTPhoneNumber}"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST User ID" />
+									</td>
+									<td>
+										<p:inputText id="editGSTUsernew" value="#{customerBean.custDTO1.customerGSTUserID}"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Id: " />  
+					            	</td>
+									<td>
+										<p:inputText id="editGSTEmailnew" value="#{customerBean.custDTO1.customerGSTEmailId}"/>	 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST Password" />
+									</td>
+									<td>
+										<p:inputText id="editGSTPasswordnew" value="#{customerBean.custDTO1.customerGSTPassword}"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Password " />  
+					            	</td>
+									<td>
+										<p:inputText id="editGSTEmailPasswordnew" value="#{customerBean.custDTO1.customerGSTEmailPassword}"/>
+									</td>
+								</tr>
+							</table>
+							</p:panel>
+
+							<p:panel id="editGST" header="GST Details" rendered="#{customerBean.custDTO.editCustGSTmode}">
+							<table>
+								<tr>
+									<td>
+										<h:outputText value="GSTIN Number" />
+									</td>
+									<td>
+										<p:inputText id="editGSTINEdit" value="#{customerBean.custDTO.customerGSTINNumber}"/>
+									</td>
+									<td>
+										<h:outputText value="Phone Number: " />  
+									</td>
+									<td>
+										<p:inputText id="editPhone" value="#{customerBean.custDTO.customerGSTPhoneNumber}"/>
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST User ID" />
+									</td>
+									<td>
+										<p:inputText id="editGSTUser" value="#{customerBean.custDTO.customerGSTUserID}"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Id: " />  
+					            	</td>
+									<td>
+										<p:inputText id="editGSTEmail" value="#{customerBean.custDTO.customerGSTEmailId}"/>	 
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<h:outputText value="GST Password" />
+									</td>
+									<td>
+										<p:inputText id="editGSTPassword" value="#{customerBean.custDTO.customerGSTPassword}"/>
+									</td>
+									<td>
+										<h:outputText value="GST Email Password " />  
+					            	</td>
+									<td>
+										<p:inputText id="editGSTEmailPassword" value="#{customerBean.custDTO.customerGSTEmailPassword}"/>
+									</td>
+								</tr>
+							</table>
+							</p:panel>
+
+						</h:panelGrid>
+						
+                    	 
+						
+                    </p:panel>
+                    
+                    <p:dataTable id="customerTable" var="cust"
+						value="#{customerBean.customerModel}" paginator="true" rows="10"
+						selection="#{customerBean.custDTO}" selectionMode="single"
+						emptyMessage="No Customer found with given criteria"
+						paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+						rowsPerPageTemplate="10,50,100">
+						<p:ajax event="rowSelect" update=":form:display" />
+						<p:ajax event="rowUnselect"
+							listener="#{customerBean.onRowUnselect}" update=":form:display" />
+						<f:facet name="header">  
+	                            Select a Record to View/Update (Total Records: #{customerBean.customerModel.rowCount})  
+	                        </f:facet>
+						<p:column headerText="Serial Number" sortBy="#{cust.customerSerialNumber}"
+							filterBy="#{cust.customerSerialNumber}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerSerialNumber}" />
+						</p:column>
+						<p:column headerText="IT File Number" sortBy="#{cust.customerITFileNumber}"
+							filterBy="#{cust.customerITFileNumber}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerITFileNumber}" />
+						</p:column>
+						<p:column headerText="GST File Number" sortBy="#{cust.customerGSTFileNumber}"
+							filterBy="#{cust.customerGSTFileNumber}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerGSTFileNumber}" />
+						</p:column>
+						<p:column headerText="Customer Name" sortBy="#{cust.customerCompanyName}"
+							filterBy="#{cust.customerCompanyName}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerCompanyName}" />
+						</p:column>
+						<p:column headerText="Contact Person" sortBy="#{cust.customerProprietorName}"
+							filterBy="#{cust.customerProprietorName}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerProprietorName}" />
+						</p:column>
+						<p:column headerText="PAN Number" sortBy="#{cust.customerPANNumber}"
+							filterBy="#{cust.customerPANNumber}" filterMatchMode="contains">
+							<h:outputText value="#{cust.customerPANNumber}" />
+						</p:column>
+						
+					</p:dataTable>
+                    
+                    
+                    
+                    
+                </h:form>
+            </ui:define>
+        </ui:composition>
+
+    </body>
+</html>

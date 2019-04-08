@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <meta http-equiv="Cache-Control"
+              content="no-cache, no-store, must-revalidate" />
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta http-equiv="Expires" content="0" />
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./resources/css/default.css" rel="stylesheet"
+              type="text/css" />
+        <link href="./resources/css/cssLayout.css" rel="stylesheet"
+              type="text/css" />
+
+        <script type="text/javascript" src="common/script/Clock.js"></script>
+        <script type="text/javascript">
+	
+				
+				function printLedgerReport() {
+				    //alert("test");
+				    window.open('PDFReportServlet?pdf=test.pdf');
+				    return false;
+				}
+				function printOSReport(){
+					 window.open('PDFOSReportServlet?pdf=os.pdf');
+					 return false;
+				}
+				function printStockReport(){
+					 window.open('PDFStockReportServlet?pdf=stock.pdf');
+					 return false;
+				}
+				function printPaymentReport(){
+					 window.open('PDFPaymentReportServlet?pdf=pay.pdf');
+					 return false;
+				}
+				function printTDSReport(){
+					 window.open('PDFTDSReportServlet?pdf=pay.pdf');
+					 return false;
+				}
+				function CalculateTDS(){
+					var tdsBox = document.getElementById('form:tdspercent_input');
+            		var Temp = tdsBox.options[tdsBox.selectedIndex].value;
+            		var tds = Temp.toString();
+            		//alert(tds);
+					document.getElementById("form:tdsAmt").value=(tds * document.getElementById("form:crAmt1a").value)/100; 
+					return true;
+				}
+				function CalculateTDS1(){
+					var tdsBox = document.getElementById('form:tdspercent1_input');
+            		var Temp = tdsBox.options[tdsBox.selectedIndex].value;
+            		var tds = Temp.toString();
+            		//alert(tds);
+					document.getElementById("form:tdsAmt1").value=(tds * document.getElementById("form:crAmt1").value)/100; 
+					return true;
+				}
+				function displayResult()
+				{
+				var x=document.getElementById("mySelect").selectedIndex;
+				var y=document.getElementById("mySelect").options;
+				alert("Index: " + y[x].index + " is " + y[x].text);
+				}
+				function refreshForm(){
+					alert("fdsf");
+					document.forms[0].submit();
+					alert("fdsf");
+				}
+				
+		</script>
+		        
+<style>
+
+.bold {
+	font-weight: bold;
+	font-size: 10pt;
+}
+
+.boldFound {
+	font-weight: bold;
+	font-size: 10pt;
+	color: blue;
+}
+
+.boldNotFound {
+	font-weight: bold;
+	font-size: 10pt;
+	color: red;
+}
+
+.rsInput {
+	width: 157px;
+}
+</style>
+        <title>SNM - Customer Profile Management</title>
+    </h:head>
+
+    <h:body>
+        <p:layout fullPage="true">
+            <p:layoutUnit id="center" position="north" >
+                        <table width="100%">
+                            <tr valign="top">
+                                <td align="left" width="25%" style="vertical-align: bottom;">
+                                    Welcome #{loginBean.logDTO.userName} !!!
+                                </td>
+
+                                <td align="center" width="50%"  style="color : rgb(117,48,13); font-size: 25px; font-weight: bold" >
+                                    SNM - Customer Profile Management
+                                </td>
+                                <td align="right" class="svcContent2" width="50%" style="vertical-align: bottom;"><span
+                                        id="clock"></span></td>
+                            </tr>
+                         </table>
+                        
+            </p:layoutUnit>
+                    <p:layoutUnit id="inner_center" position="center">
+                     <table>   
+                            <tr>
+                            	<td>
+									<h:form rendered="#{loginBean.logDTO.isLoggedIn}" >
+
+									    <p:growl id="messages"/>
+									
+									    <p:menubar rendered="#{loginBean.logDTO.isLoggedIn}">
+									        <p:submenu label="Masters" icon="ui-icon-document"  >
+									            <p:menuitem value="Customer Details" url="/customer.xhtml"/>
+									        </p:submenu>
+									        
+	            							<p:submenu label="Tools" icon="ui-icon-pencil" rendered="#{loginBean.logDTO.readOnlyUser}">
+									            <p:menuitem value="Data Export to Excel" url="/exportdata.xhtml" style="width: 155px;"
+									            	rendered="#{loginBean.logDTO.readOnlyUser}"/>
+									        </p:submenu>								
+
+									       
+											<p:submenu label="Help" rendered="#{loginBean.logDTO.readOnlyUser}">
+												<p:menuitem value="Backup Database" url="/backupdb.xhtml" 
+													rendered="#{loginBean.logDTO.readOnlyUser}"/>
+											</p:submenu>
+									
+									        <p:menuitem value="Logout" action="#{loginBean.logout}" icon="ui-icon-close" 
+									        	rendered="#{loginBean.logDTO.isLoggedIn}"/>
+									    </p:menubar>
+									</h:form>
+				                </td>
+                            </tr>
+                        </table>
+						                    
+                    
+                        <ui:insert name="content">Put default content here, if any.</ui:insert>
+
+                    </p:layoutUnit>
+ 
+            
+        </p:layout>   
+    </h:body>
+    
+</html>

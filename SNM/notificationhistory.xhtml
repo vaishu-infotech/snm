@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <body>
+        <ui:composition template="./template.xhtml">
+
+            <ui:define name="content">
+                <h:form id="form">
+                     <p:dataTable var="notification" value="#{lazyNotificationTable.notificationList}" paginator="true" rows="10" paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
+     rowsPerPageTemplate="5,10,15,25,50,100" id="notificationTable" lazy="true">
+                        <f:facet name="header">  
+                            List of notifications 
+                        </f:facet>  
+
+                        <p:column headerText="Range" sortBy="#{notification.range}">
+                            <h:outputText value="#{notification.range}" />
+                        </p:column>
+
+                        <p:column headerText="No of devices " sortBy="#{notification.deviceCount}">
+                            <h:outputText value="#{notification.deviceCount}" />
+                        </p:column>
+
+                        <p:column headerText="Message">
+                            <p:inputTextarea id="notificationmessage" rows="2"  cols="125"
+                                             value="#{notification.message}" readonly="true"
+                                             autoResize="false"/>
+                        </p:column>
+
+                        <p:column headerText="Message sent date" sortBy="#{notification.date}">
+                            <h:outputText value="#{notification.date}">
+                                <f:convertDateTime pattern="dd-MM-yyyy HH:mm:ss a" />
+                            </h:outputText>
+                        </p:column>
+                        <f:facet name="footer">  
+                            Total notification sent #{lazyNotificationTable.lazyModel.rowCount}
+                        </f:facet>  
+
+                    </p:dataTable>
+
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </body>
+</html>

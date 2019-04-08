@@ -1,0 +1,1 @@
+<% response.sendRedirect("login.xhtml?faces-redirect=true");%> 
